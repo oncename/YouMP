@@ -103,11 +103,56 @@
 - 
 ---
 
+---
+
+## 📂 Структура проекта (ключевые файлы)
+
+| Файл | Назначение |
+|------|------------|
+| `ApplicationEvents.vb` | Глобальные события приложения (запуск, завершение, обработка исключений) |
+| `AsyncMediaDecoder.vb` | Асинхронный декодер с поддержкой аппаратного Zero-Copy и программного фолбэка |
+| `CircularStack.vb` | Неаллоцирующий стек фиксированного размера для истории зума |
+| `Direct3D11VideoPlayer.vb` | Основной видеоплеер на D3D11 с рендерингом композитинга и скраббингом |
+| `FFmpegCommandBuilder.vb` | Построитель аргументов командной строки для FFmpeg (экспорт, превью, контакт-листы) |
+| `FFmpegFluentBuilder.vb` | Fluent-интерфейс для сборки команд FFmpeg |
+| `FFmpegService.vb` | Обёртка над FFmpeg/FFprobe с асинхронным выполнением, прогрессом и кэшированием метаданных |
+| `FileManager.vb` | Управление файлами, кэшированием, генерация путей кэша |
+| `Form1.vb` | Главное окно редактора (MVP-представление) |
+| `Form2.vb` | Всплывающее окно плеера (Popout) |
+| `Form3.vb` | Окно настроек (тема, аудиодвижок, папка загрузок) |
+| `Form4.vb` | Инспектор свойств выделенного клипа (PiP-трансформации) |
+| `GpuFrameCacheManager.vb` | LRU-кэш для GPU-кадров с управлением временем жизни |
+| `GpuFrameExtractor.vb` | Извлечение кадров из видео в GPU-кэш с аппаратным преобразованием NV12→BGRA |
+| `GpuFramePool.vb` | Пул GPU-текстур для переиспользования памяти |
+| `GpuVideoFrame.vb` | Обёртка над D3D11 Texture2D с автоматическим возвратом в пул |
+| `HardwareMonitorService.vb` | Обнаружение GPU (NVIDIA/AMD) через WMI и LibreHardwareMonitor |
+| `IMainEditorView.vb` | Интерфейс главного окна для MVP-паттерна |
+| `IServices.vb` | Контракты для всех сервисов (IFFmpegService, IAudioPlayer, IPlaybackController и др.) |
+| `ITimelineController.vb` | Интерфейс контроллера таймлайна |
+| `MainEditorPresenter.vb` | Презентер (MVP) – связывает View, Model, Renderer и ExportService |
+| `MediaHelper.vb` | Вспомогательные методы для получения длительности медиа через FFprobe |
+| `ModernProgressBar.vb` | Кастомный прогресс-бар с поддержкой темы |
+| `NAudioSyncPlayer.vb` | Аудиодвижок на базе NAudio (WASAPI/ASIO) с поддержкой мультитрекового микширования |
+| `PlaybackController.vb` | Оркестратор воспроизведения – синхронизация видео и аудио по Master Clock |
+| `PreviewCacheManager.vb` | Кэш превью-кадров с подсчётом ссылок и LRU-вытеснением |
+| `ProjectModel.vb` | Модель проекта – треки, клипы, маркеры, зумы, история изменений (Undo/Redo) |
+| `SettingsService.vb` | Singleton для хранения/загрузки настроек в JSON |
+| `ThemeManager.vb` | Управление тёмной/светлой темой через Win32 API (DWM) |
+| `ThemePalette.vb` | Цветовые схемы для Direct2D-рендеринга таймлайна |
+| `TileTimelineRenderer.vb` | Основной рендерер таймлайна на Direct2D (миниатюры, волны, маркеры, кривые) |
+| `TimeIndependentVolumeSmoother.vb` | Сглаживание громкости, независимое от частоты кадров |
+| `TimelineController.vb` | Контроллер таймлайна – обработка событий мыши и синхронизация с моделью |
+| `UIStateRules.vb` | Правила доступности UI-элементов в зависимости от типа медиа |
+| `UnmanagedFrameBuffer.vb` | Буфер неуправляемой памяти для софтверного декодирования |
+| `NativeMediaDecoder.cs` | Нативный декодер на C# с FFmpeg.AutoGen и аппаратным ускорением D3D11VA |
+
+---
+
 ## 🛠️ Используемые технологии
 
 | Компонент          | Технология                                     |
 |--------------------|------------------------------------------------|
-| **Язык**           | VB.NET (Option Strict On)                      |
+| **Язык**           | VB.NET (Option Strict On) + C# (нативный слой) |
 | **Платформа**      | .NET 10.0, Windows Forms                       |
 | **Графика**        | SharpDX (Direct2D1, Direct3D11, DXGI)          |
 | **Медиа**          | FFmpeg.AutoGen (D3D11VA, NVENC, AMF)           |
