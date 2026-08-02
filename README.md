@@ -166,3 +166,5 @@ git clone https://github.com/yourusername/yoump-media-pro.git
 cd yoump-media-pro
 dotnet restore
 dotnet build -c Release
+
+Разработано с ❤️ для профессионального видеомонтажа на Windows.
