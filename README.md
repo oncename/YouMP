@@ -51,3 +51,38 @@
 - **Инспектор свойств** — редактирование PiP-параметров выделенного клипа
 - **Всплывающее окно плеера** (Popout) с Fullscreen-режимом
 - **Drag & Drop** — загрузка файлов перетаскиванием на таймлайн
+- 
+---
+
+## 🛠️ Используемые технологии
+
+| Компонент          | Технология                                     |
+|--------------------|------------------------------------------------|
+| **Язык**           | VB.NET (Option Strict On)                      |
+| **Платформа**      | .NET 10.0, Windows Forms                       |
+| **Графика**        | SharpDX (Direct2D1, Direct3D11, DXGI)          |
+| **Медиа**          | FFmpeg.AutoGen (D3D11VA, NVENC, AMF)           |
+| **Аудио**          | NAudio (WASAPI, ASIO)                          |
+| **Логирование**    | Serilog                                        |
+| **Сборка**         | x64                                            |
+
+---
+
+## 📦 Системные требования
+
+- **ОС:** Windows 10/11 (версия 19041+)
+- **.NET:** 10.0 Runtime
+- **Графика:** DirectX 11.1 совместимый GPU
+- **FFmpeg:** исполняемые файлы в `ffmpeg\bin\` (автозагрузка из папки приложения)
+
+---
+
+## 🚀 Установка и запуск
+
+### Из исходников
+
+```bash
+git clone https://github.com/yourusername/yoump-media-pro.git
+cd yoump-media-pro
+dotnet restore
+dotnet build -c Release
